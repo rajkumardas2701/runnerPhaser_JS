@@ -20,6 +20,13 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.(png|svg|jpg|gif)$/,
+      //   use: {
+      //     // 'file-loader',
+      //     loader: 'babel-loader',
+      //   },
+      // },
     ],
   },
 
@@ -36,7 +43,7 @@ module.exports = {
         },
         {
           // from: path.resolve(__dirname, 'assets', '**', '*'),
-          from: 'assets/*.*',
+          from: 'src/assets/*.*',
           to: path.resolve(__dirname, 'dist'),
         },
       ],

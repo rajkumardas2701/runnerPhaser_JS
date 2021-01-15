@@ -1,13 +1,22 @@
-/* eslint-disable no-undef */
+// import Phaser from './lib/phaser';
 import 'phaser';
-
-import SimpleScene from './scenes/simple-scene';
+import GameScene from './scenes/gameScene';
 
 const gameConfig = {
-  width: 680,
-  height: 400,
-  scene: SimpleScene,
+  type: Phaser.AUTO,
+  width: 1000,
+  height: 600,
+  scene: GameScene,
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: {
+        y: 200,
+      },
+      debug: true,
+    },
+  },
 };
 
-// eslint-disable-next-line no-new
-new Phaser.Game(gameConfig);
+const game = new Phaser.Game(gameConfig);
+console.log('Game Loaded!!');
