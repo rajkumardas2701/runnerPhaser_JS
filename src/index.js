@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import Phaser from './lib/phaser';
 import 'phaser';
 import GameScene from './scenes/gameScene';
@@ -18,5 +19,6 @@ const gameConfig = {
   },
 };
 
+// eslint-disable-next-line no-unused-vars
 const game = new Phaser.Game(gameConfig);
-console.log('Game Loaded!!');
+// console.log('Game Loaded!!');
