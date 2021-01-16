@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
-import 'phaser';
+import Phaser from 'phaser';
+import AvatorActions from './avatorActions';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -10,14 +11,14 @@ export default class GameScene extends Phaser.Scene {
   platforms;
 
   /** @type {Phaser.Physics.Arcade.Sprite} */
-  player
+  player;
 
   preload() {
     this.load.image('background', 'src/assets/gameBackground.jpg');
     this.load.image('platform1', 'src/assets/ground-big.png/');
     this.load.image('platform2', 'src/assets/ground_small.png/');
     this.load.image('platform3', 'src/assets/groundgrass_small.png/');
-    this.load.spritesheet('avator', 'src/assets/maleAdventurer_sheetHD.png', { frameWidth: 180, frameHeight: 250 }, 8);
+    this.load.spritesheet('avator', 'src/assets/maleAdventurer_sheetHD.png', { frameWidth: 192, frameHeight: 256 }, 3);
   }
 
   create() {
@@ -35,18 +36,18 @@ export default class GameScene extends Phaser.Scene {
       const body1 = platform.body;
       body1.updateFromGameObject();
     }
-
-    this.player = this.physics.add.sprite(100, 100, 'avator').setScale(0.3);
-    this.player.setBounce(0.2);
-    this.player.setCollideWorldBounds(true);
+    // this.player = this.physics.add.sprite(100, 100, 'avator').setScale(0.3);
+    // this.player.setBounce(0.2);
+    this.player = new AvatorActions(this, 100, 100, 'avator', 0);
+    // this.player.setCollideWorldBounds(true);
 
     this.physics.add.collider(this.player, this.platforms);
-
-    // let run = this.player.animations.add('run');
-    // aladin.animations.play('run', 20, true);
   }
 
-  // update() {
-
+  // update(t, dt) {
+  //   const touchingDown = this.player.body.touching.down;
+  //   if (touchingDown) {
+  //     this.player.setVelocityX(100);
+  //   }
   // }
 }
