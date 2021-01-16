@@ -39,15 +39,27 @@ export default class GameScene extends Phaser.Scene {
     // this.player = this.physics.add.sprite(100, 100, 'avator').setScale(0.3);
     // this.player.setBounce(0.2);
     this.player = new AvatorActions(this, 100, 100, 'avator', 0);
-    // this.player.setCollideWorldBounds(true);
-
     this.physics.add.collider(this.player, this.platforms);
+
+    this.player.setCollideWorldBounds(true);
   }
 
-  // update(t, dt) {
-  //   const touchingDown = this.player.body.touching.down;
-  //   if (touchingDown) {
-  //     this.player.setVelocityX(100);
-  //   }
-  // }
+  update() {
+    // const touchingDown = this.player.body.touching.down;
+    // if (touchingDown) {
+    //   this.player.setVelocityX(100);
+    // }
+    this.cursors = this.input.keyboard.createCursorKeys();
+    if (this.cursors.left.isDown) {
+      this.player.move('left');
+    } else if (this.cursors.right.isDown) {
+      this.player.move('right');
+    } else {
+      this.player.idle();
+    }
+
+    if (this.cursors.up.isDown && this.player.body.touching.down) {
+      this.player.jump();
+    }
+  }
 }
