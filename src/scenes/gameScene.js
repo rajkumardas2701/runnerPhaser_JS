@@ -9,24 +9,21 @@ export default class GameScene extends Phaser.Scene {
   /** @type {Phaser.Physics.Arcade.Group} */
   platforms;
 
+  /** @type {Phaser.Physics.Arcade.Sprite} */
+  player
+
   preload() {
     this.load.image('background', 'src/assets/gameBackground.jpg');
     this.load.image('platform1', 'src/assets/ground-big.png/');
     this.load.image('platform2', 'src/assets/ground_small.png/');
     this.load.image('platform3', 'src/assets/groundgrass_small.png/');
+    this.load.spritesheet('avator', 'src/assets/maleAdventurer_sheetHD.png', { frameWidth: 180, frameHeight: 250 }, 8);
   }
 
   create() {
     this.add.image(400, 150, 'background').setScrollFactor(1, 0);
-    // this.physics.add.staticImage(170, 450, 'platform1').setScale(0.7);
-    // this.physics.add.staticImage(450, 450, 'platform2').setScale(0.7);
-    // this.physics.add.staticImage(670, 450, 'platform3').setScale(0.7);
-    // this.physics.add.staticImage(850, 450, 'platform2').setScale(0.7);
-
     this.platforms = this.physics.add.staticGroup();
 
-    /** @type {Phaser.Physics.Arcade.Sprite} */
-    // const platform = this.platforms.create(170, 450, 'platform1');
     let curX = 150;
     for (let i = 0; i < 4; i += 1) {
       const pf = Phaser.Math.Between(1, 3);
@@ -36,8 +33,20 @@ export default class GameScene extends Phaser.Scene {
 
       /** @type {Phaser.Physics.Arcade.StaticBody} */
       const body1 = platform.body;
-
       body1.updateFromGameObject();
     }
+
+    this.player = this.physics.add.sprite(100, 100, 'avator').setScale(0.3);
+    this.player.setBounce(0.2);
+    this.player.setCollideWorldBounds(true);
+
+    this.physics.add.collider(this.player, this.platforms);
+
+    // let run = this.player.animations.add('run');
+    // aladin.animations.play('run', 20, true);
   }
+
+  // update() {
+
+  // }
 }

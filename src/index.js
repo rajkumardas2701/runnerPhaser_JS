@@ -7,12 +7,12 @@ const gameConfig = {
   type: Phaser.AUTO,
   width: 1000,
   height: 600,
-  scene: GameScene,
+  scene: [GameScene],
   physics: {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 200,
+        y: 250,
       },
       debug: true,
     },
