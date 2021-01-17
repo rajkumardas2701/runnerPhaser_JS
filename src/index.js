@@ -14,7 +14,7 @@ const gameConfig = {
       gravity: {
         y: 250,
       },
-      debug: true,
+      debug: false,
     },
   },
 };
