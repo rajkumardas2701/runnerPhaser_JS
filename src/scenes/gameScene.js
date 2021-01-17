@@ -7,12 +7,6 @@ export default class GameScene extends Phaser.Scene {
     super('game');
   }
 
-  // /** @type {Phaser.Physics.Arcade.Group} */
-  // platforms;
-
-  // /** @type {Phaser.Physics.Arcade.Sprite} */
-  // player;
-
   preload() {
     this.load.image('background', 'src/assets/gameBackground.jpg');
     this.load.image('platform1', 'src/assets/ground-big.png/');
@@ -24,22 +18,6 @@ export default class GameScene extends Phaser.Scene {
 
   create() {
     this.add.image(400, 150, 'background').setScrollFactor(1, 0);
-    // this.platforms = this.physics.add.group();
-
-    // let curX = 150;
-    // for (let i = 0; i < 4; i += 1) {
-    //   const pf = Phaser.Math.Between(1, 3);
-    //   const platform = this.platforms.create(curX, 450, `platform${pf}`);
-    //   platform.scale = 0.7;
-    //   curX += Phaser.Math.Between(200, 350);
-
-    //   /** @type {Phaser.Physics.Arcade.StaticBody} */
-    //   const body1 = platform.body;
-    //   body1.updateFromGameObject();
-    // }
-    // this.player = this.physics.add.sprite(100, 100, 'avator').setScale(0.3);
-    // this.player.setBounce(0.2);
-
     this.platformGroup = this.add.group({
       removeCallback(platform) {
         platform.scene.platformPool.add(platform);
@@ -61,14 +39,10 @@ export default class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.platformGroup);
 
-    this.player.setCollideWorldBounds(true);
+    // this.player.setCollideWorldBounds(true);
   }
 
   update() {
-    // const touchingDown = this.player.body.touching.down;
-    // if (touchingDown) {
-    //   this.player.setVelocityX(100);
-    // }
     this.cursors = this.input.keyboard.createCursorKeys();
     if (this.cursors.left.isDown) {
       this.player.move('left');
@@ -81,18 +55,31 @@ export default class GameScene extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.touching.down) {
       this.player.jump();
     }
+    let minDistance = 1000;
+    let rightmostPlatformHeight = 0;
+    this.platformGroup.getChildren().forEach((platform) => {
+      const platformDistance = 1000 - platform.x - platform.displayWidth / 2;
+      if (platformDistance < minDistance) {
+        minDistance = platformDistance;
+        rightmostPlatformHeight = platform.y;
+      }
+      if (platform.x < -(platform.displayWidth / 2)) {
+        this.platformGroup.killAndHide(platform);
+        this.platformGroup.remove(platform);
+      }
+    }, this);
 
-    // this.platforms.children.iterate(child => {
-    //   /** @type {Phaser.Physics.Arcade.Sprite} */
-    //   const platform = child;
-    //   const { scrollX } = this.cameras.main;
-    //   if (platform.x >= scrollX + 1000) {
-    //     platform.x = scrollX - Phaser.Math.Between(50, 100);
-    //     platform.setVelocityX(Phaser.Math.Between(-150, -200));
-    //     platform.setGravityY(-500);
-    //     platform.body.updateFromGameObject();
-    //   }
-    // });
+    if (minDistance > this.nextPlatformDistance) {
+      const nextPlatformWidth = Phaser.Math.Between(90, 300);
+      const platformRandomHeight = 10 * Phaser.Math.Between(-10, 10);
+      const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
+      const minPlatformHeight = 600 * 0.4;
+      const maxPlatformHeight = 600 * 0.8;
+      const nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap,
+        minPlatformHeight,
+        maxPlatformHeight);
+      this.addPlatform(nextPlatformWidth, 1000 + (nextPlatformWidth / 2), nextPlatformHeight);
+    }
   }
 
   addPlatform(platformWidth, posX, posY) {
@@ -104,10 +91,9 @@ export default class GameScene extends Phaser.Scene {
       platform.visible = true;
       this.platformPool.remove(platform);
     } else {
-      platform = this.physics.add.sprite(posX, posY, 'platform1');
+      platform = this.physics.add.sprite(posX, posY, 'platform2');
       platform.setVelocityX(Phaser.Math.Between(-150, -200));
       platform.setGravityY(-250);
-      // platform.setScale(0.7);
       this.platformGroup.add(platform);
       platform.setImmovable(true);
     }
