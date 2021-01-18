@@ -33,5 +33,8 @@
     "start": "webpack serve --mode development --open"
   },
   "author": "Rajkumar Das",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "^12.18.4"
+  }
 }
