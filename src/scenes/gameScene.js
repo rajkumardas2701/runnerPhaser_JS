@@ -121,6 +121,6 @@ export default class GameScene extends Phaser.Scene {
       child.setScale(0.5);
     });
 
-    // this.physics.add.collider(this.coins, this.platformGroup);
+    this.physics.add.collider(this.coins, this.platformGroup);
   }
 }
