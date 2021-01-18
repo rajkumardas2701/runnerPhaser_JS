@@ -7,7 +7,7 @@ export default class GameOver extends Phaser.Scene {
 
   create() {
     this.add.image(170, 250, 'gameOverImg');
-    this.add.text(500, 160, 'Game Over', {
+    this.add.text(500, 80, 'Game Over', {
       fontSize: '48px',
       fontFamily: 'cursive',
     }).setOrigin(0.5);
@@ -18,7 +18,7 @@ export default class GameOver extends Phaser.Scene {
       document.getElementById('user-name').remove();
       this.scene.start('game');
     });
-    this.add.text(500, 250, `Total Score: ${window.score}`, { fontSize: 36 }).setOrigin(0.5);
+    this.add.text(500, 200, `Total Score: ${window.score}`, { fontSize: 36 }).setOrigin(0.5);
 
     const inputName = document.createElement('input');
     inputName.setAttribute('id', 'user-name');
