@@ -34,5 +34,8 @@ export default class Menu extends Phaser.Scene {
         this.scene.start(`${actions[i].scene}`);
       });
     }
+
+    this.add.image(180, 350, 'menu1').setScale(1);
+    this.add.image(780, 350, 'menu2').setScale(1);
   }
 }

@@ -24,6 +24,8 @@ export default class LoadGame extends Phaser.Scene {
     this.load.image('menu', 'src/assets/menu.png');
     this.load.image('leaderboard', 'src/assets/leaderboard.png');
     this.load.image('play', 'src/assets/play.png');
+    this.load.image('menu1', 'src/assets/menu1.png');
+    this.load.image('menu2', 'src/assets/menu2.png');
 
     this.load.on('complete', () => {
       this.scene.start('Menu');
