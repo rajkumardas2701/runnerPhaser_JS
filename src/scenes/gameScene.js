@@ -2,6 +2,7 @@
 import Phaser from 'phaser';
 import AvatorActions from './avatorActions';
 import Helper from './helper';
+// import GameOver from './gameOver';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -51,7 +52,7 @@ export default class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    this.scoreText = this.add.text(420, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
   }
 
   update() {
@@ -67,6 +68,11 @@ export default class GameScene extends Phaser.Scene {
     if (this.cursors.up.isDown && this.player.body.touching.down) {
       this.player.jump();
     }
+
+    if (this.player.y > 600 || this.player.x < -50) {
+      this.scene.start('game-over');
+    }
+
     let minDistance = 1000;
     let rightmostPlatformHeight = 0;
     this.platformGroup.getChildren().forEach((platform) => {

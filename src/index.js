@@ -2,19 +2,20 @@
 // import Phaser from './lib/phaser';
 import 'phaser';
 import GameScene from './scenes/gameScene';
+import GameOver from './scenes/gameOver';
 
 const gameConfig = {
   type: Phaser.AUTO,
   width: 1000,
   height: 600,
-  scene: [GameScene],
+  scene: [GameScene, GameOver],
   physics: {
     default: 'arcade',
     arcade: {
       gravity: {
         y: 250,
       },
-      debug: false,
+      debug: true,
     },
   },
 };
