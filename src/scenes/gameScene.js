@@ -109,6 +109,11 @@ export default class GameScene extends Phaser.Scene {
     this.nextPlatformDistance = Phaser.Math.Between(80, 300);
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  collectCoins(player, coin) {
+    coin.disableBody(true, true);
+  }
+
   dropCoins() {
     this.coins = this.physics.add.group({
       key: 'coin',
@@ -122,5 +127,6 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.collider(this.coins, this.platformGroup);
+    this.physics.add.overlap(this.player, this.coins, this.collectCoins, null, this);
   }
 }
