@@ -35,8 +35,32 @@ export default class Instructions extends Phaser.Scene {
       fontFamily: 'cursive',
     }).setOrigin(0.5);
 
-    this.add.image(150, 550, 'menu').setScale(0.7);
-    this.add.image(500, 550, 'playAgain').setScale(0.7);
-    this.add.image(850, 550, 'leaderboard').setScale(0.7);
+    // const menu = this.add.image(150, 550, 'menu').setScale(0.7);
+    // const playAgain = this.add.image(500, 550, 'playAgain').setScale(0.7);
+    // const leaderboard = this.add.image(850, 550, 'leaderboard').setScale(0.7);
+
+    const actions = [{
+      imgName: 'menu',
+      xcoord: 150,
+      scene: 'Menu',
+    },
+    {
+      imgName: 'playAgain',
+      xcoord: 500,
+      scene: 'game',
+    },
+    {
+      imgName: 'leaderboard',
+      xcoord: 850,
+      scene: 'LeaderBoard',
+    }];
+
+    for (let i = 0; i < actions.length; i += 1) {
+      const btn = this.add.image(actions[i].xcoord, 550, actions[i].imgName).setScale(0.7);
+      btn.setInteractive();
+      btn.on('pointerup', () => {
+        this.scene.start(`${actions[i].scene}`);
+      });
+    }
   }
 }
