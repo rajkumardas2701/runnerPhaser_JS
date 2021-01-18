@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import Phaser from 'phaser';
 import AvatorActions from './avatorActions';
-import Helper from './helper';
+import Helper from '../helper/helper';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {

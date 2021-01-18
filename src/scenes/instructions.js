@@ -45,7 +45,7 @@ export default class Instructions extends Phaser.Scene {
       scene: 'Menu',
     },
     {
-      imgName: 'playAgain',
+      imgName: 'play',
       xcoord: 500,
       scene: 'game',
     },
