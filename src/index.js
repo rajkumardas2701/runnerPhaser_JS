@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-// import Phaser from './lib/phaser';
 import 'phaser';
 import GameScene from './scenes/gameScene';
 import GameOver from './scenes/gameOver';
