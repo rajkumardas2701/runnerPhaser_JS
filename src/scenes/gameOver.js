@@ -33,8 +33,8 @@ export default class GameOver extends Phaser.Scene {
 
 
     const playAgain = this.add.image(
-      140, 520, 'playAgain',
-    ).setScale(0.8);
+      160, 520, 'playAgain',
+    ).setScale(0.7);
     playAgain.setInteractive();
     playAgain.on('pointerup', () => {
       document.getElementById('user-name').remove();
@@ -43,7 +43,7 @@ export default class GameOver extends Phaser.Scene {
 
     const instructions = this.add.image(
       800, 520, 'instructions',
-    ).setScale(0.8);
+    ).setScale(0.7);
     instructions.setInteractive();
 
     instructions.on('pointerup', () => {

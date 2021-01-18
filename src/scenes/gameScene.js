@@ -20,6 +20,12 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('submit', 'src/assets/submit.png');
     this.load.image('playAgain', 'src/assets/playAgain.png');
     this.load.image('instructions', 'src/assets/instructions.png');
+    this.load.image('leftarrow', 'src/assets/leftarrow.png');
+    this.load.image('rightarrow', 'src/assets/rightarrow.png');
+    this.load.image('uparrow', 'src/assets/uparrow.png');
+    this.load.image('spacebar', 'src/assets/spacebar.png');
+    this.load.image('menu', 'src/assets/menu.png');
+    this.load.image('leaderboard', 'src/assets/leaderboard.png');
   }
 
   create() {
