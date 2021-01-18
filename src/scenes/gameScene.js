@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import Phaser from 'phaser';
 import AvatorActions from './avatorActions';
+import Helper from './helper';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -18,6 +19,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   create() {
+    window.score = 0;
     this.add.image(400, 150, 'background').setScrollFactor(1, 0);
     this.platformGroup = this.add.group({
       removeCallback(platform) {
@@ -48,6 +50,8 @@ export default class GameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true,
     });
+
+    this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
   }
 
   update() {
@@ -109,9 +113,10 @@ export default class GameScene extends Phaser.Scene {
     this.nextPlatformDistance = Phaser.Math.Between(80, 300);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   collectCoins(player, coin) {
     coin.disableBody(true, true);
+    Helper.updateScore(this, 10);
+    this.scoreText.setText(`Score: ${window.score}`);
   }
 
   dropCoins() {
