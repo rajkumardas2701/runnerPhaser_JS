@@ -14,6 +14,7 @@ export default class GameScene extends Phaser.Scene {
     this.cursors = this.input.keyboard.createCursorKeys();
     this.load.image('platform3', 'src/assets/groundgrass_small.png/');
     this.load.spritesheet('avator', 'src/assets/maleAdventurer_sheetHD.png', { frameWidth: 192, frameHeight: 256 }, 3);
+    this.load.image('coin', 'src/assets/coin.png');
   }
 
   create() {
@@ -40,6 +41,13 @@ export default class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.player, this.platformGroup);
 
     // this.player.setCollideWorldBounds(true);
+
+    this.timedEvent = this.time.addEvent({
+      delay: 5000,
+      callback: this.dropCoins,
+      callbackScope: this,
+      loop: true,
+    });
   }
 
   update() {
@@ -99,5 +107,20 @@ export default class GameScene extends Phaser.Scene {
     }
     platform.displayWidth = platformWidth;
     this.nextPlatformDistance = Phaser.Math.Between(80, 300);
+  }
+
+  dropCoins() {
+    this.coins = this.physics.add.group({
+      key: 'coin',
+      repeat: 4,
+      setXY: { x: 150, y: 0, stepX: 170 },
+    });
+
+    this.coins.children.iterate((child) => {
+      child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+      child.setScale(0.5);
+    });
+
+    // this.physics.add.collider(this.coins, this.platformGroup);
   }
 }
