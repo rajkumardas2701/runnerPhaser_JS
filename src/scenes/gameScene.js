@@ -2,7 +2,6 @@
 import Phaser from 'phaser';
 import AvatorActions from './avatorActions';
 import Helper from './helper';
-// import GameOver from './gameOver';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -17,6 +16,10 @@ export default class GameScene extends Phaser.Scene {
     this.load.image('platform3', 'src/assets/groundgrass_small.png/');
     this.load.spritesheet('avator', 'src/assets/maleAdventurer_sheetHD.png', { frameWidth: 192, frameHeight: 256 }, 3);
     this.load.image('coin', 'src/assets/coin.png');
+    this.load.image('gameOverImg', 'src/assets/gameOverImg.png');
+    this.load.image('submit', 'src/assets/submit.png');
+    this.load.image('playAgain', 'src/assets/playAgain.png');
+    this.load.image('instructions', 'src/assets/instructions.png');
   }
 
   create() {
