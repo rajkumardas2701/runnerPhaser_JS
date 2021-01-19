@@ -25,14 +25,9 @@ export default class GameScene extends Phaser.Scene {
 
     this.addPlatform(700, 500, 600 * 0.8);
 
-    // number of consecutive jumps made by the player
-    // this.playerJumps = 0;
-
     this.player = new AvatorActions(this, 100, 100, 'avator', 0);
 
     this.physics.add.collider(this.player, this.platformGroup);
-
-    // this.player.setCollideWorldBounds(true);
 
     this.timedEvent = this.time.addEvent({
       delay: 5000,
