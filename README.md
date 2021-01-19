@@ -18,7 +18,11 @@ To play this game, the player has to jump on the different platforms as they run
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Demo Link](https://elegant-ramanujan-b37b73.netlify.app/)
+
+## Project Presentation
+
+[Presentation Link](https://www.youtube.com/watch?v=pHOw4G5Ukoo&feature=youtu.be)
 
 
 ## Game instructions
@@ -67,7 +71,7 @@ Development of a platform game as part of the Microverse curriculum to show tech
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/rajkumardas2701/runnerPhaser_JS/issues).
 
 ## Show your support
 
