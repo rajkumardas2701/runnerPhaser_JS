@@ -30,7 +30,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "start": "webpack serve --mode development --open"
+    "start": "webpack-dev-server --open"
   },
   "author": "Rajkumar Das",
   "license": "ISC",
