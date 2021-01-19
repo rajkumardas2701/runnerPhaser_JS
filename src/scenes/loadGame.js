@@ -36,7 +36,7 @@ export default class LoadGame extends Phaser.Scene {
     const { height } = this.cameras.main;
 
     const loadingText = this.make.text({
-      x: width / 2 - 10,
+      x: width / 2 - 65,
       y: height / 2 - 30,
       text: 'Loading Game!!...',
       style: {
@@ -47,7 +47,7 @@ export default class LoadGame extends Phaser.Scene {
     loadingText.setOrigin(0.5, 0.5);
 
     const percentText = this.make.text({
-      x: width / 2 - 20,
+      x: width / 2 - 65,
       y: height / 2 + 25,
       text: '0%',
       style: {
