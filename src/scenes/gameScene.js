@@ -37,6 +37,7 @@ export default class GameScene extends Phaser.Scene {
     });
 
     this.scoreText = this.add.text(420, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
+    this.add.text(310, 570, 'Developed by - Rajkumar Das', { fontSize: '24px', fill: '#fff' });
   }
 
   update() {

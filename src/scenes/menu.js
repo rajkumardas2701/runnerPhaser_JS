@@ -37,5 +37,6 @@ export default class Menu extends Phaser.Scene {
 
     this.add.image(180, 350, 'menu1').setScale(1);
     this.add.image(780, 350, 'menu2').setScale(1);
+    this.add.text(310, 570, 'Developed by - Rajkumar Das', { fontSize: '24px', fill: '#fff' });
   }
 }
