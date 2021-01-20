@@ -4,11 +4,14 @@
   "description": "> One paragraph statement about the project.",
   "main": "index.js",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "phaser": "^3.51.0",
+    "regenerator-runtime": "^0.13.7",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-csstree-validator": "^1.9.0",
@@ -16,21 +19,27 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
     "babel-core": "^6.26.3",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^7.0.0",
+    "jest": "^26.6.3",
     "webpack": "^5.14.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "start": "webpack serve --mode development --open"
   },
   "author": "Rajkumar Das",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "^12.18.4"
+  }
 }

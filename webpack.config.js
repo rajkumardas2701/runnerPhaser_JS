@@ -35,8 +35,11 @@ module.exports = {
           to: path.resolve(__dirname, 'dist'),
         },
         {
-          // from: path.resolve(__dirname, 'assets', '**', '*'),
-          from: 'assets/*.*',
+          from: path.resolve(__dirname, './src/styles.css'),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: 'src/assets/*.*',
           to: path.resolve(__dirname, 'dist'),
         },
       ],
@@ -45,10 +48,6 @@ module.exports = {
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true),
     }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'production-dependencies',
-    //   filename: 'production-dependencies.bundle.js',
-    // }),
   ],
 
 };
