@@ -34,11 +34,13 @@ export default class LeaderBoard extends Phaser.Scene {
     const showScores = async (results) => {
       this.loading.text = '';
       let y = 0;
-      for (let i = 0; i < 8; i += 1) {
-        this.add.text(400, 240 + y, `${i + 1}.`, { fontSize: 20 });
-        this.add.text(435, 240 + y, `${results[i].user}`, { fontSize: 20 });
-        this.add.text(570, 240 + y, `${results[i].score}`, { fontSize: 20 });
-        y += 25;
+      for (let i = 0; i < 10; i += 1) {
+        if (results[i].user) {
+          this.add.text(380, 170 + y, `${i + 1}.`, { fontSize: 20 });
+          this.add.text(415, 170 + y, `${results[i].user}`, { fontSize: 20 });
+          this.add.text(550, 170 + y, `${results[i].score}`, { fontSize: 20 });
+          y += 25;
+        }
       }
     };
     const retrieveScore = async () => {

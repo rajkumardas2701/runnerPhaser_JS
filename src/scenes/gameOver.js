@@ -24,7 +24,7 @@ export default class GameOver extends Phaser.Scene {
     const inputName = document.createElement('input');
     inputName.setAttribute('id', 'user-name');
     inputName.setAttribute('class', 'input-name');
-    inputName.setAttribute('placeholder', 'Enter Your Name');
+    inputName.setAttribute('placeholder', 'Enter Your Name (1 - 13 characters)');
     inputName.type = 'text';
     document.querySelector('.content-section').appendChild(inputName);
 
