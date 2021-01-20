@@ -58,6 +58,7 @@ Development of a platform game as part of the Microverse curriculum to show tech
 - Use spritesheet to show Avator's actions.
 - Write code for different scenes: Load, Instructions, Menu, Game and GameOver Scene.
 - Add coins as collectible items for the score system.
+- Testing getScores, pushScores and displaying scores as transacted with API.
 
 ## Authors
 
