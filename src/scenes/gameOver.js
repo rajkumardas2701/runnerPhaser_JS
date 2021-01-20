@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import apiQuery from '../helper/fetchData';
 
 export default class GameOver extends Phaser.Scene {
   constructor() {
@@ -30,6 +31,23 @@ export default class GameOver extends Phaser.Scene {
     const submitBtn = this.add.image(500, 400, 'submit');
     submitBtn.setScale(1.0);
     submitBtn.setInteractive();
+
+    const callLeaderBoard = () => {
+      document.getElementById('user-name').remove();
+      this.scene.start('LeaderBoard');
+    };
+
+    const sendData = async () => {
+      this.name = document.getElementById('user-name').value;
+      if (this.name.length < 13 && this.name.length > 1) {
+        await apiQuery.pushScore(this.name, window.score);
+        callLeaderBoard();
+      }
+    };
+
+    submitBtn.on('pointerup', () => {
+      sendData();
+    });
 
 
     const playAgain = this.add.image(

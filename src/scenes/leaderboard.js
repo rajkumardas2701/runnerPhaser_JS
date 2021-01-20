@@ -35,9 +35,9 @@ export default class LeaderBoard extends Phaser.Scene {
       this.loading.text = '';
       let y = 0;
       for (let i = 0; i < 8; i += 1) {
-        this.add.text(340, 240 + y, `${i + 1}.`, { fontSize: 20 });
-        this.add.text(375, 240 + y, `${results[i].user}`, { fontSize: 20 });
-        this.add.text(510, 240 + y, `${results[i].score}`, { fontSize: 20 });
+        this.add.text(400, 240 + y, `${i + 1}.`, { fontSize: 20 });
+        this.add.text(435, 240 + y, `${results[i].user}`, { fontSize: 20 });
+        this.add.text(570, 240 + y, `${results[i].score}`, { fontSize: 20 });
         y += 25;
       }
     };
