@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime';
 
 import { pushScores } from './mocks';
 
-test('Check for correct data posted to the provided URL', async () => {
+it('Check for correct data posted to the provided URL', async () => {
   const result = await pushScores();
 
   expect(result.user).toBe('User2');
@@ -11,7 +11,7 @@ test('Check for correct data posted to the provided URL', async () => {
   expect(result.user).not.toBe('TestUser');
 });
 
-test('Check for correct data  type posted to the provided URL', async () => {
+it('Check for correct data  type posted to the provided URL', async () => {
   const result = await pushScores();
 
   expect(typeof result).toBe('object');
@@ -20,7 +20,7 @@ test('Check for correct data  type posted to the provided URL', async () => {
   expect(typeof result).not.toBe('number');
 });
 
-test('Check for data availability posted to the provided URL', async () => {
+it('Check for data availability posted to the provided URL', async () => {
   const result = await pushScores();
 
   expect(result.user).not.toEqual('');
